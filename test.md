@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     %% Définition des Acteurs
     Client([Client - Externe]):::externe
@@ -21,3 +22,5 @@ graph TD
     %% Styles pour GitHub
     classDef externe fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     classDef interne fill:#fff3e0,stroke:#e65100,stroke-width:2px
+
+```
