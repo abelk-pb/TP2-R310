@@ -1,26 +1,23 @@
 graph TD
-    %% Acteurs Externes
-    C((Client))
-    
-    %% Acteurs Internes
-    AV[Agent Vendeur]
-    SF[Service Financier]
-    SEC[Secrétariat/Hotline]
+    %% Définition des Acteurs
+    Client([Client]):::externe
+    Vendeur[Agent Vendeur]:::interne
+    Financier[Service Financier]:::interne
+    Secretariat[Secrétariat / Hotline]:::interne
 
-    %% Flux Phase 1 & 2
-    C -- 1. Critères / Modifs --> AV
-    AV -- 2. Propositions / Devis --> C
-    
-    %% Flux Phase 3 & 4
-    C -- 3. Accord & Infos Perso --> AV
-    
-    %% Flux Phase 5
-    C -- 4. Paiement --> SF
-    SF -- 5. Facture / Reçu --> C
-    
-    %% Flux Phase 6
-    SF -. 6. Confirmation Solde .-> AV
-    AV -- 7. Pack Voyage (Billets/Bons) --> C
-    
-    %% Flux Phase 7
-    C -- 8. Appel Assistance --> SEC
+    %% Flux d'informations
+    Client -- "1. Critères de recherche" --> Vendeur
+    Vendeur -. "2. Catalogue / Packs" .-> Client
+    Client -- "3. Personnalisation" --> Vendeur
+    Vendeur -- "4. Devis détaillé" --> Client
+    Client -- "5. Accord + Infos persos" --> Vendeur
+    Vendeur -- "6. Dossier pour paiement" --> Financier
+    Client -- "7. Règlement (Acompte/Total)" --> Financier
+    Financier -. "8. Facture / Reçu" .-> Client
+    Financier -- "9. Confirmation paiement" --> Vendeur
+    Vendeur -- "10. Pack Voyage (Billets/Bons)" --> Client
+    Client -- "11. Demande assistance" --> Secretariat
+
+    %% Styles
+    classDef externe fill:#f9f,stroke:#333,stroke-width:2px
+    classDef interne fill:#fff,stroke:#333,stroke-width:2px
